@@ -61,13 +61,13 @@ console.log(barsik.feed());
 function Animal(name) {
     this.name = name;
     this._foodAmount = 50;
-
+    var self = this;
     this._formatFoodAmount = function() {
         return this._foodAmount + 'гр.'
     }
     this.feed = function() {
-        console.log('Насыпаем в миску ' + this.dailyNorm() + ' корма.');
-    };
+        console.log('Насыпаем в миску ' + self.dailyNorm() + ' корма.');
+    }
     this.dailyNorm = function(amount) {
         if (!arguments.length) return this._formatFoodAmount();
         if (amount < 50) {
@@ -85,7 +85,7 @@ function Cat(name) {
 
     var feedForCat = this.feed;
     this.feed = function() {
-        feedForCat.call(this);
+        feedForCat();
         console.log('Кот доволен ^_^');
         return this;
     }
