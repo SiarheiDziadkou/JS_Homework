@@ -82,6 +82,7 @@ var initialObj = {
     }
 }
 
+
 function deepClone(obj) {
     var clone = new obj.constructor();
 
@@ -96,27 +97,34 @@ function deepClone(obj) {
     return clone;
 }
 
-function deepCompare(initialObj, clonedObj) {
-    if (initialObj === clonedObj) {
+function deepCompare(obj1, obj2) {
+    if (obj1 === obj2) {
         return true;
     }
 
-    if (initialObj == null || typeof initialObj != 'object' || clonedObj == null || typeof initialObj != 'object') {
+    if (obj1 == null || typeof obj1 != 'object' || obj2 == null || typeof obj2 != 'object') {
         return false;
     }
-    for () {
-
+    for (var i in obj1) {
+        if (obj1.hasOwnProperty(i) !== obj2.hasOwnProperty(i)) {
+            return false;
+        }
     }
-
-
+    for (var i in obj2) {
+        if (!deepCompare(obj1[i], obj2[i])) {
+            return false;
+        }
+    }
+    return true
 }
 var clonedObj = deepClone(initialObj);
-
+deepCompare(initialObj, clonedObj);
+console.log(initialObj);
+console.log(clonedObj);
 clonedObj.object.object2.array2[1].name = 'Vasya';
 clonedObj.array.push(2);
 
-console.log(initialObj);
-console.log(clonedObj);
+
 
 
 
