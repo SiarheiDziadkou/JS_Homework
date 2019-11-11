@@ -18,26 +18,27 @@
     filterNumbersArr([-1, 0, 2, 34, -2]);
 */
 
-var newArr = [-1, 0, 2, 34, -2];
-
-var el = newArr.filter(function(number) {
-    return number > 0;
-});
-
-console.log(el);
+function felterNumberArr(arr) {
+    var arr = arr.filter(function(number) {
+        return number > 0;
+    });
+    console.log(arr);
+}
+felterNumberArr([-1, 0, 2, 34, -2]);
 
 /*
 Задание 2:
 Написать функцию, принимающую массив чисел и возвращающую первое найденное положительное число.
 */
 
-var newArr = [-1, 0, 2, 34, -2];
+function foundPositive(arr) {
+    var positive = arr.find(function(arr) {
+        return arr > 0;
+    });
+    return positive
+}
 
-var foundPositive = newArr.find(function(newArr) {
-    return newArr > 0;
-});
-
-console.log(foundPositive);
+foundPositive([-1, 0, 2, 34, -2]);
 
 /*
 Задание 3:
@@ -51,12 +52,7 @@ console.log(foundPositive);
 function isPalindrome(originalString) {
     originalString = originalString.toLowerCase();
     var reverseString = originalString.split('').reverse().join('');
-
-    if (reverseString == originalString) {
-        return true;
-    } else {
-        return false;
-    }
+    return reverseString == originalString
 }
 
 isPalindrome('шалаШ');
@@ -73,18 +69,13 @@ isPalindrome('привет');
 */
 
 function areAnagrams(param1, param2) {
-    var lenString1 = param1.length;
-    var lenString2 = param2.length;
-    var testAnagrams1 = param1.toLowerCase().split("").sort().join("");
-    var testAnagrams2 = param2.toLowerCase().split("").sort().join("");
-
-    if (lenString1 != lenString2) {
-        return false;
-    } else if (testAnagrams1 != testAnagrams2) {
-        return false;
-    } else {
-        return true;
-    }
+    var testAnagrams1 = param1.toLowerCase().split('').sort().join('');
+    var testAnagrams2 = param2.toLowerCase().split('').sort().join('');
+    return testAnagrams1 == testAnagrams2;
+}
+// ну или как говорит мой преподаватель по JS: "вообще если хотите сделать по красоте" то:
+function areAnagrams(param1, param2) {
+    return param1.toLowerCase().split('').sort().join('') === param2.toLowerCase().split('').sort().join('');
 }
 
 areAnagrams('кот', 'отк');
@@ -94,7 +85,6 @@ areAnagrams('кот', 'отко');
 /*
 Задание 5:
 Написать функцию, которая будет разбивать массив на под-массивы определенной длины.
-
 Функция должна работать следущим образом:
     divideArr([1, 2, 3, 4], 2); // [[1, 2], [3, 4]]
     divideArr([1, 2, 3, 4, 5, 6, 7, 8], 3); // [[1, 2, 3], [4, 5, 6], [7, 8]]
