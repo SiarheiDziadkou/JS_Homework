@@ -96,9 +96,10 @@ function calcRepeats(text) {
     repeats.forEach(function(el) {
         result[el] = result[el] + 1 || 1;
     });
-    for (var key in result) {
-        console.log(' Максимальное число повторений у слова ' + '"' + key + '"' + ' - ' + result[key]);
-    }
+    var maxReapets = Object.keys(result).reduce(function(el, i) {
+        return result[el] >= result[i] ? el : i;
+    });
+    console.log(' Максимальное число повторений у слова ' + '"' + maxReapets + '"' + ' - ' + result[maxReapets]);
 }
 
-calcRepeats('АНТОХА МС - Бабки: Если бабки на исходе. Не впадай в грусть, братец, ты. Голодуха может быть полезной. Похудеешь, хапанешь чуть-чуть тоски.');
+calcRepeats('АНТОХА МС - Бабки: Если бабки на исходе. Не впадай в грусть, братец, ты. Голодуха может быть полезной. Похудеешь, хапанешь чуть-чуть тоски. ');
