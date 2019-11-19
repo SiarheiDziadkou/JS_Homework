@@ -1,0 +1,22 @@
+#chessBoard {
+    display: inline-block;
+    border: 2px outset lightGray;
+}
+
+#chessBoard div {
+    line-height: 1px;
+}
+
+#chessBoard span {
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+}
+
+#chessBoard span.white {
+    background-color: white;
+}
+
+#chessBoard span.black {
+    background-color: black;
+}
