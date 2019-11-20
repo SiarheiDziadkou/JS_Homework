@@ -1,12 +1,11 @@
 function validateInput() {
-    var lineX = document.getElementById('lengthX').value;
-    var lineY = document.getElementById('lengthY').value;
-    var regNum = /^([1-9]|10)$/;
-    if (regNum.exec(lineX) == null) {
+    var lineX = +document.getElementById('lengthX').value;
+    var lineY = +document.getElementById('lengthY').value;
+    if (lineX < 1 || lineX > 10 || isNaN(lineX)) {
         alert('Введите в строку X: число от 1 до 10')
         document.getElementById('lengthX').value = '';
         document.getElementById('myButt').disabled = true;
-    } else if (regNum.exec(lineY) == null) {
+    } else if (lineY < 1 || lineY > 10 || isNaN(lineY)) {
         alert('Введите в строку Y: число от 1 до 10')
         document.getElementById('lengthY').value = '';
         document.getElementById('myButt').disabled = true;
@@ -19,7 +18,7 @@ function validateInput() {
 function checkIfInputsEmpty() {
     var lineX = document.getElementById('lengthX').value;
     var lineY = document.getElementById('lengthY').value;
-    if ((lineY === '' || lineY == null) || (lineX === '' || lineX == null)) {
+    if ((lineY.trim() === '' || lineY.trim() == null) || (lineX.trim() === '' || lineX.trim() == null)) {
         document.getElementById('myButt').disabled = true;
     } else {
         document.getElementById('myButt').disabled = false;
@@ -44,7 +43,6 @@ function drawChessBoard() {
     chessBoard.innerHTML = '';
     var x = document.getElementById('lengthX').value;
     var y = document.getElementById('lengthY').value;
-
     for (var i = 0; i < y; i++) {
         var row = chessBoard.appendChild(document.createElement("div"));
         for (var j = 0; j < x; j++) {
