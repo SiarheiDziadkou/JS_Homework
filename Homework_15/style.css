@@ -1,0 +1,20 @@
+.cells {
+    border: solid black 1px;
+    width: 250px;
+    height: 75px;
+}
+
+.add {
+    border: solid black 1px;
+    width: 250px;
+    height: 75px;
+    text-align: center;
+}
+
+#addButton {
+    height: 75px;
+    width: 770px;
+    background-color: white;
+    border: 0;
+    font-weight: bolder;
+}
